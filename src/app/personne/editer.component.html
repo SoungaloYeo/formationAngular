@@ -1,0 +1,76 @@
+<br>
+<div class="row">
+  <form class="col s6 offset-s3" (ngSubmit)="onEdit()" #personneFormEdit="ngForm">
+    <div class="row">
+
+<input type="number" hidden value={{personne.id}}>
+
+      <div class="form-group col s12">
+        <label for="nom">NOM</label>
+        <input id="nom" type="text" class="validate"
+               pattern="^[a-zA-ZéèçÉÈ -]{2,20}$"
+               [(ngModel)]="personne.nom"
+               name="nom" #nom="ngModel"
+               required placeholder="">
+        <div [hidden]="nom.valid || nom.pristine" class="red lighten-3">
+            le nom est obligatoire: au plus 15 caractaires
+          </div>
+      </div>
+
+      <div class="form-group col s12">
+        <label for="prenom">PRENOM</label>
+        <input  id="prenom" type="text" class="validate"
+        pattern="^[a-zA-ZéèçÉÈ - ]{2,60}$"
+                [(ngModel)]="personne.prenom"
+                name="prenom" #prenom="ngModel"
+                required>
+        <div [hidden]="prenom.valid || prenom.pristine" class="red lighten-3">
+          le prenom est obligatoire: au plus 30 caractaires
+        </div> <!-- pristine: Jamais été modifié -->
+      </div>
+
+      <div class="form-group col s12">
+        <label for="age">AGE</label>
+        <input id="age" type="number" class="validate"
+               pattern="^[0-9]{1,3}$"
+               [(ngModel)]="personne.age"
+               name="age" #age="ngModel"
+               required>
+        <div [hidden]="age.valid || age.pristine" class="red lighten-3">
+            l'age est obligatoire: au plus 3 caractaires
+          </div>
+      </div>
+
+      <div class="form-group col s12">
+        <label for="description">DESCRIPTION</label>
+        <textarea id="description" type="text" class="materialize-textarea"
+                  pattern="^[a-zA-Z-, ]{1,500}$"
+                  [(ngModel)]="personne.description"
+                  name="description" #description="ngModel"
+                  required></textarea>
+        <div [hidden]="description.valid || description.pristine" class="red lighten-3">
+            la description est obligatoire
+          </div>
+      </div>
+
+      <div class="form-group col s12">
+        <label for="image">Url Image</label>
+        <textarea id="image" type="text" class="materialize-textarea"
+                  [(ngModel)]="personne.image"
+                  name="image" #image="ngModel"
+                  required></textarea>
+        <div [hidden]="image.valid || image.pristine" class="red lighten-3">
+            l'url image est obligatoire
+          </div>
+      </div>
+
+      <button routerLink="/personnes" class="blue btn-small waves-effect waves-light col s3 offset-s5" type="submit" name="action">Retour
+        <i class="material-icons left">arrow_back</i>
+      </button>
+
+      <button [disabled]="!personneFormEdit.form.valid" class="btn-small waves-effect waves-light col s3 offset-s1" type="submit" name="action">MISE À JOUR
+        <i class="material-icons left">save</i>
+      </button>
+    </div>
+  </form>
+</div>

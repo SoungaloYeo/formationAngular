@@ -1,0 +1,20 @@
+<div class="row" *ngIf="personne">
+    <div class="col s12 m6 offset-m3">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{personne.image}}" height="250px" width="100%">
+          <span class="card-title">{{personne.nom}} {{personne.prenom}}</span>
+  
+        </div>
+        <div class="card-content">
+            <p>{{personne.age}}</p>
+          <p>{{personne.description}}</p>
+          <!-- <a (click)="selectAPerson(personne)" class="btn-floating waves-effect waves-light green secondary-content"><i
+              class="material-icons">visibility</i></a> -->
+          <a class="btn-floating  waves-effect waves-light blue secondary-content"><i class="material-icons">edit</i></a>
+          <a class="btn-floating  waves-effect waves-light red secondary-content"><i class="material-icons">delete</i></a>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>

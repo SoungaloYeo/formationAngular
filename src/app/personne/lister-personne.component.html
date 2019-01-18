@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+<a routerLink="/personnes/ajout" class="btn-floating btn-large waves-effect waves-light right red"><i class="material-icons">add</i></a>
+<br><br><br>
+<div class="row">
+  <div class="col s6 m3" *ngFor="let personne of personnes">
+    <div class="card" border-change>
+      <div class="card-image">
+        <img [src]="personne.image" height="200px" width="100%">
+        <span class="card-title">{{personne.nom}} {{personne.prenom}}</span>
+
+      </div>
+      <div class="card-content">
+        <p>{{personne.description}}</p>
+        <a (click)="selectAPerson(personne)" class="btn-floating waves-effect waves-light green secondary-content"><i
+            class="material-icons">visibility</i></a>
+        <a routerLink="/personnes/editer/{{personne.id}}" class="btn-floating  waves-effect waves-light blue secondary-content"><i class="material-icons">edit</i></a>
+        <a class="btn-floating  waves-effect waves-light red secondary-content"><i class="material-icons">delete</i></a>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div>
+  <label>Nom: </label><input #nom (keyup)="change(nom.value)" type="text" border-change>
+  <div>En minuscule:
+    <span>{{value | lowercase}}</span>
+    <p>En majuscule
+      <span>{{value | uppercase}}</span>
+    </p>
+  </div>
+</div> -->
