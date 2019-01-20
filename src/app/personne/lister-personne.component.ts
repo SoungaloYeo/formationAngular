@@ -25,6 +25,13 @@ export class ListePersonneComponent implements OnInit {
         this.router.navigate(['personne', personne.id]);
       }
 
+      deletePerson(personne: Personne): void {
+          if(window.confirm("etes-vous sure de vouloir suprimer ?")){
+          this.personneService.deletePerson(personne);
+          this.personnes = this.personneService.getAllPerson();
+          }
+      }
+
       value: string;
       change(value: string) { 
           this.value = value;

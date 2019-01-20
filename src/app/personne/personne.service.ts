@@ -29,4 +29,13 @@ export class PersonneService {
         }
     }
 
+
+    deletePerson(personne: Personne): void {
+        for(let i = 0; i < this.getAllPerson().length; i++) {
+            if(personne.id === this.getAllPerson()[i].id) {
+                this.getAllPerson().splice(i, 1);
+            }
+        }
+    }
+
 }
