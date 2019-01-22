@@ -7,6 +7,7 @@ import { PersonneService } from './personne.service';
 import { EditerComponent } from './editer.component';
 import { AjoutComponent } from './ajout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PersonneDbService } from './personne-db.service';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ],
     exports: [],
     providers: [
-        PersonneService
+        PersonneService,
+        PersonneDbService
     ],
 })
 export class PersonneModule {}

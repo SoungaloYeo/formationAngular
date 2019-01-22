@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Personne, PERSONNES } from '../shared/model.personne';
-import { ActivatedRoute } from '@angular/router';
-import { PersonneService } from './personne.service';
+import { Personne } from '../shared/model.personne';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PersonneDbService } from './personne-db.service';
 
 @Component({
     selector: 'detail-personne',
@@ -9,18 +9,38 @@ import { PersonneService } from './personne.service';
     styleUrls: ['./detail-personne.component.css']
 })
 export class DetailPersonneComponent implements OnInit {
-    personne: Personne = null;
-    personnes: Personne[] = null;
+    public personne: Personne = null;
 
     constructor(
         private route: ActivatedRoute,
-        private personneService: PersonneService
-    ) { }
+        private router: Router,
+        // private personneService: PersonneService,
+        private personneDbService: PersonneDbService) {
+    }
 
     ngOnInit(): void {
-        // this.personnes = this.personneService.getAllPerson();
-
         let id = +this.route.snapshot.params['id'];
-        this.personne = this.personneService.getOne(id);
+
+        this.personneDbService.getOnePersonne(id).subscribe(
+            res => {
+                this.personne = res;
+            },
+            err => {
+                alert('error');
+            });
+    }
+
+    editAPerson(): void {
+        this.router.navigate(['personne/editer', this.personne.id]);
+    }
+
+    deleteAPerson(): void {
+        if (window.confirm('êtes-vous sure de vouloir suprimer ?')) {
+            this.personneDbService.deletePersonne(this.personne).subscribe(
+                _ => {
+                    this.router.navigate(['/personnes'])
+                }
+            );
+        }
     }
 }

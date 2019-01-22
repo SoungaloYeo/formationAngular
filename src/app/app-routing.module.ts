@@ -3,13 +3,18 @@ import { NgModule } from '@angular/core';
 import { ListePersonneComponent } from './personne/lister-personne.component';
 import { DetailPersonneComponent } from './personne/detail-personne.component';
 import { NotFoundComponent } from './notfound/notfound.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
   { 
     path: '',
-    redirectTo: '/personnes',
+    redirectTo: '/home',
     pathMatch: 'full'
+  },
+  { 
+    path: 'home',
+    component: HomeComponent
   },
   { 
     path: '**',

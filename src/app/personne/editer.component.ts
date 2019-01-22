@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Personne } from '../shared/model.personne';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PersonneService } from './personne.service';
+import { PersonneDbService } from './personne-db.service';
 
 @Component({
   selector: 'app-editer',
@@ -9,20 +9,34 @@ import { PersonneService } from './personne.service';
   styleUrls: ['./editer.component.css']
 })
 export class EditerComponent implements OnInit {
-  personne : Personne;
+  public personne: Personne = null;
 
-  constructor(private router: Router,
-    private personneService: PersonneService,
-    private activatedRoute: ActivatedRoute) { }
-
+  constructor(
+    private route: ActivatedRoute,
+    private router:Router,
+    private personneDbService: PersonneDbService) { }
 
   ngOnInit() {
-   const id =  +this.activatedRoute.snapshot.params['id'];
-   this.personne = this.personneService.getOne(id);
+    let id = +this.route.snapshot.params['id'];
+    this.personneDbService.getOnePersonne(id).subscribe (
+      res => {
+        this.personne = res;
+      },
+      err => {
+        alert('pas d\'element portant id '+id);
+      }
+    );
   }
 
-  onEdit(): void {
-    this.personneService.updatePerson(this.personne);
+  onSubmit(): void {
+    this.personneDbService.updatePersonne(this.personne).subscribe(
+      _ => {
+        console.log('updated');
+      },
+      err => {
+        alert('mise à jour impossible');
+      }
+    );
     this.router.navigate(['/personnes']);
   }
 

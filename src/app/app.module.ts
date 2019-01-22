@@ -9,6 +9,10 @@ import { NavbarComponent } from './navbar.component';
 import { PersonneModule } from './personne/personne.module';
 import { VilleModule } from './ville/ville.module';
 import { DataBindingComponent } from './data-binding.component';
+import { InMemoryDataService } from './personne/inmemory-data';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +21,12 @@ import { DataBindingComponent } from './data-binding.component';
     NavbarComponent,
     DataBindingComponent,
     BorderChangeDirective,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
-
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation:false }),
+    HttpClientModule,
     PersonneModule,
     VilleModule,
 

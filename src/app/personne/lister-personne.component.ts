@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Personne, PERSONNES } from '../shared/model.personne';
 import { Router } from '@angular/router';
-import { PersonneService } from './personne.service';
+import { PersonneDbService } from './personne-db.service';
 
 @Component({
     selector: 'liste-personne',
@@ -9,28 +9,51 @@ import { PersonneService } from './personne.service';
     styleUrls: ['./lister-personne.component.css']
 })
 export class ListePersonneComponent implements OnInit {
-    personnes: Personne[] = null;
-    
+   
+    public personnes: Personne[];
+    private dateObj: number;
+
     constructor(
-        private router:Router,
-        private personneService:PersonneService
-        ) { }
+        private router: Router,
+        private personneBdService: PersonneDbService) { }
 
     ngOnInit(): void {
-        this.personnes = this.personneService.getAllPerson();
-     }
+        this.listePersonnes();
 
-     selectAPerson(personne: Personne): void {
-        console.log(personne);
-        this.router.navigate(['personne', personne.id]);
-      }
+    }
 
-      deletePerson(personne: Personne): void {
-          if(window.confirm("etes-vous sure de vouloir suprimer ?")){
-          this.personneService.deletePerson(personne);
-          this.personnes = this.personneService.getAllPerson();
-          }
-      }
+    listePersonnes(): void {
+        this.personneBdService.getAllPersonnes().subscribe(
+            dataPersonnes => {
+                this.personnes = dataPersonnes;
+            },
+            err => {
+                alert('imposible de suprimer');
+            });
+    }
+
+    // methode retirée pour traitement direct dans composant HTML 
+    // selectAPerson(personne: Personne): void {
+    //     console.log(personne);
+    //     this.router.navigate(['personne', personne.id]);
+    // }
+
+    // methode retirée pour traitement direct dans composant HTML 
+    // editAPerson(personne: Personne): void {
+    //     console.log(personne);
+    //     this.router.navigate(['personne/editer', personne.id]);
+    // }
+
+    deletePerson(person: Personne): void {
+        if(window.confirm('êtes-vous sure de vouloir suprimer ?')){
+        this.personneBdService.deletePersonne(person).subscribe(
+            _ => {
+                this.listePersonnes();
+            } 
+        );
+        }
+    }
+
 
       value: string;
       change(value: string) { 
