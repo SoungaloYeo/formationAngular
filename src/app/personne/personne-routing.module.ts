@@ -7,21 +7,31 @@ import { EditerComponent } from './editer.component';
 
 const routes: Routes = [
     {
-        path: 'personnes',
-        component: ListePersonneComponent
-    },
-    {
-        path: 'personnes/ajout',
-        component: AjoutComponent
-    },
-    {
-        path: 'personnes/editer/:id',
-        component: EditerComponent
-    },
-    {
-        path: 'personne/:id',
-        component: DetailPersonneComponent
-    },
+        path: 'personne',
+        children: [            
+                {
+                    path: '',
+                    redirectTo: 'all',
+                    pathMatch: 'full'
+                },
+                {
+                    path: 'all',
+                    component: ListePersonneComponent
+                },
+                {
+                    path: 'ajout',
+                    component: AjoutComponent
+                },
+                {
+                    path: 'editer/:id',
+                    component: EditerComponent
+                },
+                {
+                    path: ':id',
+                    component: DetailPersonneComponent
+                }
+            ]
+        }
 ];
 
 @NgModule({

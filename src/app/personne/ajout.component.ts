@@ -34,6 +34,6 @@ export class AjoutComponent implements OnInit {
         console.log(perso);
       }
     );
-    this.route.navigate(['/personnes']);
+    this.route.navigate(['/personne']);
   }
 }

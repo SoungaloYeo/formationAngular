@@ -44,7 +44,7 @@
       <div class="form-group col s12">
         <label for="description">DESCRIPTION</label>
         <textarea id="description" type="text" class="materialize-textarea"
-                  pattern="^[a-zA-Z-, ]{1,500}$"
+                  pattern="^[a-zA-Z-, ]{1,1000}$"
                   [(ngModel)]="personne.description"
                   name="description" #description="ngModel"
                   required></textarea>
@@ -64,7 +64,7 @@
           </div>
       </div>
 
-      <button routerLink="/personnes" class="blue btn-small waves-effect waves-light col s3 offset-s5" type="submit" name="action">Retour
+      <button routerLink="/personne" class="blue btn-small waves-effect waves-light col s3 offset-s5" type="submit" name="action">Retour
         <i class="material-icons left">arrow_back</i>
       </button>
 

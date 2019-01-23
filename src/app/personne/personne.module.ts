@@ -8,6 +8,7 @@ import { EditerComponent } from './editer.component';
 import { AjoutComponent } from './ajout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonneDbService } from './personne-db.service';
+import { LoaderComponent } from './../shared/loader.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,7 @@ import { PersonneDbService } from './personne-db.service';
         DetailPersonneComponent,
         AjoutComponent,
         EditerComponent,
-
+        LoaderComponent
     ],
     imports: [ 
         CommonModule,

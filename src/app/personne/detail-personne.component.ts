@@ -30,15 +30,15 @@ export class DetailPersonneComponent implements OnInit {
             });
     }
 
-    editAPerson(): void {
-        this.router.navigate(['personne/editer', this.personne.id]);
-    }
+    // editAPerson(): void {
+    //     this.router.navigate(['personnes/editer', this.personne.id]);
+    // }
 
     deleteAPerson(): void {
         if (window.confirm('êtes-vous sure de vouloir suprimer ?')) {
             this.personneDbService.deletePersonne(this.personne).subscribe(
                 _ => {
-                    this.router.navigate(['/personnes'])
+                    this.router.navigate(['/personne'])
                 }
             );
         }

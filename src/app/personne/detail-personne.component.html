@@ -11,7 +11,7 @@
           <p>{{personne.description}}</p>
           <!-- <a (click)="selectAPerson(personne)" class="btn-floating waves-effect waves-light green secondary-content"><i
               class="material-icons">visibility</i></a> -->
-          <a class="btn-floating  waves-effect waves-light blue secondary-content"><i class="material-icons">edit</i></a>
+          <a routerLink="/personne/editer/{{personne.id}}" class="btn-floating  waves-effect waves-light blue secondary-content"><i class="material-icons">edit</i></a>
           <a class="btn-floating  waves-effect waves-light red secondary-content"><i class="material-icons">delete</i></a>
           <br>
         </div>

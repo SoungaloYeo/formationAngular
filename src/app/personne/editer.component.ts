@@ -28,7 +28,7 @@ export class EditerComponent implements OnInit {
     );
   }
 
-  onSubmit(): void {
+  onEdit(): void {
     this.personneDbService.updatePersonne(this.personne).subscribe(
       _ => {
         console.log('updated');

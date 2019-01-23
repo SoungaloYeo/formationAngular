@@ -9,17 +9,15 @@ import { PersonneDbService } from './personne-db.service';
     styleUrls: ['./lister-personne.component.css']
 })
 export class ListePersonneComponent implements OnInit {
-   
+
     public personnes: Personne[];
     private dateObj: number;
 
     constructor(
-        private router: Router,
         private personneBdService: PersonneDbService) { }
 
     ngOnInit(): void {
         this.listePersonnes();
-
     }
 
     listePersonnes(): void {
@@ -28,7 +26,7 @@ export class ListePersonneComponent implements OnInit {
                 this.personnes = dataPersonnes;
             },
             err => {
-                alert('imposible de suprimer');
+                alert('error');
             });
     }
 
@@ -45,18 +43,18 @@ export class ListePersonneComponent implements OnInit {
     // }
 
     deletePerson(person: Personne): void {
-        if(window.confirm('êtes-vous sure de vouloir suprimer ?')){
-        this.personneBdService.deletePersonne(person).subscribe(
-            _ => {
-                this.listePersonnes();
-            } 
-        );
+        if (window.confirm('êtes-vous sure de vouloir suprimer ?')) {
+            this.personneBdService.deletePersonne(person).subscribe(
+                _ => {
+                    this.listePersonnes();
+                }
+            );
         }
     }
 
 
-      value: string;
-      change(value: string) { 
-          this.value = value;
-      }
+    value: string;
+    change(value: string) {
+        this.value = value;
+    }
 }
