@@ -44,7 +44,7 @@
       <div class="form-group col s12">
         <label for="description">DESCRIPTION</label>
         <textarea id="description" type="text" class="materialize-textarea"
-                  pattern="^[a-zA-Z-, ]{1,1000}$"
+                  pattern="^[a-zA-Z-., ]{1,1500}$"
                   [(ngModel)]="personne.description"
                   name="description" #description="ngModel"
                   required></textarea>

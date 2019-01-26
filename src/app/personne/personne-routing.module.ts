@@ -4,10 +4,12 @@ import { ListePersonneComponent } from './lister-personne.component';
 import { DetailPersonneComponent } from './detail-personne.component';
 import { AjoutComponent } from './ajout.component';
 import { EditerComponent } from './editer.component';
+import { AuthGuard } from '../shared/auth-guard.service';
 
 const routes: Routes = [
     {
         path: 'personne',
+        canActivate: [AuthGuard],
         children: [            
                 {
                     path: '',

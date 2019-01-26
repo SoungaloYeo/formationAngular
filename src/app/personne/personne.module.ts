@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ListePersonneComponent } from './lister-personne.component';
 import { DetailPersonneComponent } from './detail-personne.component';
 import { PersonneRoutingModule } from './personne-routing.module';
-import { PersonneService } from './personne.service';
 import { EditerComponent } from './editer.component';
 import { AjoutComponent } from './ajout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonneDbService } from './personne-db.service';
 import { LoaderComponent } from './../shared/loader.component';
+import { AuthGuard } from '../shared/auth-guard.service';
 
 @NgModule({
     declarations: [
@@ -26,8 +26,8 @@ import { LoaderComponent } from './../shared/loader.component';
     ],
     exports: [],
     providers: [
-        PersonneService,
-        PersonneDbService
+        PersonneDbService,
+        AuthGuard
     ],
 })
 export class PersonneModule {}

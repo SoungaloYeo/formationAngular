@@ -30,18 +30,6 @@ export class ListePersonneComponent implements OnInit {
             });
     }
 
-    // methode retirée pour traitement direct dans composant HTML 
-    // selectAPerson(personne: Personne): void {
-    //     console.log(personne);
-    //     this.router.navigate(['personne', personne.id]);
-    // }
-
-    // methode retirée pour traitement direct dans composant HTML 
-    // editAPerson(personne: Personne): void {
-    //     console.log(personne);
-    //     this.router.navigate(['personne/editer', personne.id]);
-    // }
-
     deletePerson(person: Personne): void {
         if (window.confirm('êtes-vous sure de vouloir suprimer ?')) {
             this.personneBdService.deletePersonne(person).subscribe(
